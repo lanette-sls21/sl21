@@ -61,13 +61,13 @@ export function PrimaryFeatures() {
       aria-labelledby="features-title"
       className="relative overflow-hidden bg-blue-600 pt-20 pb-28 sm:py-32">
       <div className="absolute top-1/2 left-1/2 -translate-x-[44%] -translate-y-[42%]">
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
+        <Image
           src={backgroundImage}
           alt=""
           width={2245}
           height={1636}
           layout="fixed"
+          unoptimized
         />
       </div>
       <Container className="relative">
