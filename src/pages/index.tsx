@@ -9,7 +9,6 @@ import { Pricing } from "@/components/Pricing";
 import { PrimaryFeatures } from "@/components/PrimaryFeatures";
 import { SecondaryFeatures } from "@/components/SecondaryFeatures";
 import { Testimonials } from "@/components/Testimonials";
-import Hero2 from "@/components/Hero2";
 
 export default function Home() {
   return (
@@ -26,7 +25,6 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        {/* <Hero2 /> */}
         <PrimaryFeatures />
         <SecondaryFeatures />
         <CallToAction />
