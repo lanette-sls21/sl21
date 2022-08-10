@@ -1,10 +1,4 @@
-import { SanityClient } from "@sanity/client";
-
 const sanityClient = require("@sanity/client");
-
-declare global {
-  var sanity: SanityClient | undefined;
-}
 
 const date = new Date();
 const UTCDate = date.toISOString().split(":")[0];

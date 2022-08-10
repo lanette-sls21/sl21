@@ -1,7 +1,10 @@
 import Head from "next/head";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import FeaturedBlogs from "@/components/FeaturedPosts";
+import FeaturedPosts from "@/components/FeaturedPosts";
+
+import imageUrlBuilder from "@sanity/image-url";
+import { PortableText } from "@portabletext/react";
 
 export default function BlogHome() {
   return (
@@ -16,7 +19,7 @@ export default function BlogHome() {
         />
       </Head>
       <Header />
-      <FeaturedBlogs />
+      <FeaturedPosts />
       <Footer />
     </>
   );
