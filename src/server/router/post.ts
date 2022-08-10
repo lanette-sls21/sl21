@@ -8,7 +8,7 @@ export const postRouter = createRouter().query("find-many", {
     const query = groq`*[_type == "post"] {
       title,
       "author": author->name,
-      "body": *[_type == "movie" && references(^._id)].title,
+      body,
       mainImage
     }`;
 

@@ -16,6 +16,7 @@
     "@portabletext/react": "^1.0.6",
     "@prisma/client": "^4.0.0",
     "@sanity/client": "^3.3.3",
+    "@sanity/image-url": "^1.0.1",
     "@trpc/client": "^9.26.0",
     "@trpc/next": "^9.26.0",
     "@trpc/react": "^9.26.0",
