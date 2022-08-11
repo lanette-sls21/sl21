@@ -1,7 +1,7 @@
 import { trpc } from "@/utils/trpc";
 import FeaturedPostCard from "./FeaturedPostCard";
 
-export default function FeaturedBlogs() {
+export default function FeaturedPosts() {
   const posts = trpc.useQuery(["post.find-many"]);
 
   console.log(posts.data);
@@ -13,8 +13,8 @@ export default function FeaturedBlogs() {
       </div>
       <div className="relative max-w-7xl mx-auto">
         <div className="text-center">
-          <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">
-            From the blog
+          <h2 className="text-3xl tracking-tight font-medium text-gray-900 sm:text-4xl">
+            Helpful Resources
           </h2>
           <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa

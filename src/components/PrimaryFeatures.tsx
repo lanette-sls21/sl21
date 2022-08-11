@@ -12,29 +12,29 @@ import screenshotVatReturns from "@/images/screenshots/vat-returns.png";
 
 const features = [
   {
-    title: "Payroll",
+    title: "Safe Money Movement",
     description:
-      "Keep track of everyone's salaries and whether or not they've been paid. Direct deposit not supported.",
+      "Safe and powerful growth of your retirement nest egg while guaranteeing your investment principal and annual gains.​",
     image: screenshotPayroll,
   },
   {
-    title: "Claim expenses",
+    title: "Planning",
     description:
-      "All of your receipts organized into one place, as long as you don't mind typing in the data by hand.",
+      "We can predict a minimum guaranteed income starting now or 30 years from now while providing​ for life's contingencies at every life stage.",
     image: screenshotExpenses,
   },
   {
-    title: "VAT handling",
+    title: "Social Security",
     description:
-      "We only sell our software to companies who don't deal with VAT at all, so technically we do all the VAT stuff they need.",
+      "Avoid up to $10,000 tax bill on your Social Security payments. Create more tax savings with a tax-free lifetime income.",
     image: screenshotVatReturns,
   },
-  {
-    title: "Reporting",
-    description:
-      "Easily export your data into an Excel spreadsheet where you can do whatever the hell you want with it.",
-    image: screenshotReporting,
-  },
+  // {
+  //   title: "Reporting",
+  //   description:
+  //     "Easily export your data into an Excel spreadsheet where you can do whatever the hell you want with it.",
+  //   image: screenshotReporting,
+  // },
 ];
 
 export function PrimaryFeatures() {
@@ -43,7 +43,7 @@ export function PrimaryFeatures() {
   useEffect(() => {
     let lgMediaQuery = window.matchMedia("(min-width: 1024px)");
 
-    function onMediaQueryChange({ matches }) {
+    function onMediaQueryChange({ matches }: any) {
       setTabOrientation(matches ? "vertical" : "horizontal");
     }
 
@@ -75,7 +75,7 @@ export function PrimaryFeatures() {
           <h2
             id="features-title"
             className="font-display text-3xl tracking-tight text-white sm:text-4xl md:text-5xl">
-            Everything you need to run your books.
+            The details make the difference.
           </h2>
           <p className="mt-6 text-lg tracking-tight text-blue-100">
             Well everything you need if you aren’t that picky about minor
