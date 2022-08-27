@@ -15,12 +15,8 @@ export default function SanityImage({
   ...props
 }: MyImageProps) {
   const baseURL = "https://cdn.sanity.io/images/";
-  console.log(props);
   return (
-    <div
-      className={`w-auto h-[${
-        props.height ? props.height + "px" : "300px"
-      }] relative`}>
+    <div className={`w-auto h-[${props.height ?? 300}px] relative`}>
       <Image
         {...props}
         loader={() => {
