@@ -98,7 +98,7 @@ export function Header() {
         <nav className="relative z-50 text-sm">
           <ul className="flex items-center">
             <li>
-              <Link href="#">
+              <Link href="/">
                 <a>
                   <span className="sr-only">Home</span>
                   <Logo className="h-10 w-auto" />
