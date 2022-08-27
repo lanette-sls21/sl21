@@ -10,7 +10,7 @@ function FeaturedPostCard({ post }: any) {
       key={post.title}
       className="flex flex-col rounded-lg shadow-lg overflow-hidden">
       <div className="flex-shrink-0">
-        <div className="h-[300px] relative">
+        <div className="h-[220px] relative">
           <SanityImage image={post.image} />
         </div>
       </div>
