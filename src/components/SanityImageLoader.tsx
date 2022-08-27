@@ -1,46 +1,23 @@
-import Image, { ImageProps } from "next/image";
+import Img, { ImageProps } from "next/image";
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
-import { imageBuilder } from "@/server/sanity/client";
+import { useNextSanityImage } from "next-sanity-image";
+import sanity from "@/server/sanity/client";
 
 interface MyImageProps extends Omit<ImageProps, "src"> {
-  src: SanityImageSource;
-  quality?: number;
-  blur?: number;
+  image: SanityImageSource;
 }
 
-export default function SanityImage({
-  quality = 80,
-  blur = 0,
-  src,
-  ...props
-}: MyImageProps) {
+export default function SanityImage({ image }: MyImageProps) {
   const baseURL = "https://cdn.sanity.io/images/";
-  return (
-    <div className={`w-auto h-[${props.height ?? 300}px] relative`}>
-      <Image
-        {...props}
-        loader={() => {
-          let url =
-            imageBuilder
-              .image(src)
-              .auto("format")
-              .quality(quality)
-              .fit("clip")
-              .url() ?? "";
-          if (blur) {
-            url += `&blur=${blur}`;
-          }
 
-          return url;
-        }}
-        alt={"image"}
-        src={
-          imageBuilder.image(src).url()?.toString().replace(baseURL, "") ?? ""
-        }
-        layout={"fill"}
-        height="100%"
-        objectFit="cover"
-      />
-    </div>
+  const imageProps = useNextSanityImage(sanity, image);
+
+  return (
+    <Img
+      {...imageProps}
+      layout="fill"
+      objectFit="cover"
+      sizes="(max-width: 800px) 100vw, 800px"
+    />
   );
 }
