@@ -15,31 +15,36 @@ export default function SanityImage({
   ...props
 }: MyImageProps) {
   const baseURL = "https://cdn.sanity.io/images/";
-
+  console.log(props);
   return (
-    <Image
-      {...props}
-      loader={({ width: srcWidth }) => {
-        let url =
-          imageBuilder
-            .image(src)
-            .width(srcWidth)
-            .height(Number(props.height) || 256)
-            .auto("format")
-            .quality(quality)
-            .fit("clip")
-            .url() ?? "";
+    <div
+      className={`w-auto h-[${
+        props.height ? props.height + "px" : "300px"
+      }] relative`}>
+      <Image
+        {...props}
+        loader={() => {
+          let url =
+            imageBuilder
+              .image(src)
+              .auto("format")
+              .quality(quality)
+              .fit("clip")
+              .url() ?? "";
+          if (blur) {
+            url += `&blur=${blur}`;
+          }
 
-        if (blur) {
-          url += `&blur=${blur}`;
+          return url;
+        }}
+        alt={"image"}
+        src={
+          imageBuilder.image(src).url()?.toString().replace(baseURL, "") ?? ""
         }
-
-        return url;
-      }}
-      alt={"image"}
-      src={imageBuilder.image(src).url()?.toString().replace(baseURL, "") ?? ""}
-      width={500}
-      height={200}
-    />
+        layout={"fill"}
+        height="100%"
+        objectFit="cover"
+      />
+    </div>
   );
 }
