@@ -1,11 +1,15 @@
-const sanityClient = require("@sanity/client");
+import sanityClient, { ClientConfig } from "@sanity/client";
+import sanityImage from "@sanity/image-url";
 
-const date = new Date();
-const UTCDate = date.toISOString().split(":")[0];
+const options: ClientConfig = {
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+  useCdn: true,
+  useProjectHostname: true,
+};
 
-export const sanity = sanityClient({
-  projectId: "u5kaoc2x",
-  dataset: "production",
-  apiVersion: "2022-08-09", // use current UTC date - see "specifying API version"!
-  useCdn: true, // `false` if you want to ensure fresh data
-});
+const sanity = sanityClient(options);
+
+export const imageBuilder = sanityImage(sanity);
+
+export default sanity;
