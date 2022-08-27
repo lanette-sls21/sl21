@@ -31,7 +31,7 @@ export const postRouter = createRouter()
           console.error(error);
         }
       });
-
+      console.log(posts);
       return posts;
     },
   })
