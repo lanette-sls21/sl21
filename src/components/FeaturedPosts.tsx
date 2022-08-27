@@ -23,15 +23,7 @@ export default function FeaturedPosts() {
         </div>
         <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
           {posts.data?.map((post: any, index: any) => (
-            <FeaturedPostCard
-              key={index}
-              title={post.title}
-              slug={post.slug}
-              author={post.author}
-              imageUrl={post.slug}
-              description={post.description}
-              publishedAt={post.publishedAt}
-            />
+            <FeaturedPostCard key={index} post={post} />
           ))}
         </div>
       </div>
