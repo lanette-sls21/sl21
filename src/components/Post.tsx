@@ -9,7 +9,11 @@ const ptComponents = {
       if (!value?.asset?._ref) {
         return null;
       }
-      return <SanityImage src={value} />;
+      return (
+        <div className="h-[500px] relative">
+          <SanityImage image={value} />
+        </div>
+      );
     },
   },
 };
