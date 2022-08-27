@@ -5,9 +5,10 @@ import { unstable_getServerSession as getServerSession } from "next-auth";
 
 import { authOptions as nextAuthOptions } from "../../pages/api/auth/[...nextauth]";
 import { prisma } from "../db/client";
+import sanity from "../sanity/client";
 
 export const createContext = async (
-  opts?: trpcNext.CreateNextContextOptions,
+  opts?: trpcNext.CreateNextContextOptions
 ) => {
   const req = opts?.req;
   const res = opts?.res;
@@ -20,6 +21,7 @@ export const createContext = async (
     res,
     session,
     prisma,
+    sanity,
   };
 };
 

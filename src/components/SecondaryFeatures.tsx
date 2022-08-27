@@ -4,17 +4,17 @@ import { Tab } from "@headlessui/react";
 import clsx from "clsx";
 
 import { Container } from "@/components/Container";
-import screenshotContacts from "@/images/screenshots/contacts.png";
-import screenshotInventory from "@/images/screenshots/inventory.png";
-import screenshotProfitLoss from "@/images/screenshots/profit-loss.png";
+import screenshotPayroll from "@/images/screenshots/payroll.png";
+import screenshotExpenses from "@/images/screenshots/expenses.png";
+import screenshotVatReturns from "@/images/screenshots/vat-returns.png";
 
 const features = [
   {
-    name: "Reporting",
-    summary: "Stay on top of things with always up-to-date reporting features.",
+    name: "Annuities",
+    summary: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     description:
-      "We talked about reporting in the section above but we needed three items here, so mentioning it one more time for posterity.",
-    image: screenshotProfitLoss,
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ullam consequatur hic voluptates et quae pariatur..",
+    image: screenshotPayroll,
     icon: function ReportingIcon() {
       let id = useId();
       return (
@@ -43,12 +43,12 @@ const features = [
     },
   },
   {
-    name: "Inventory",
+    name: "Life Insurance",
     summary:
-      "Never lose track of what’s in stock with accurate inventory tracking.",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident.",
     description:
-      "We don’t offer this as part of our software but that statement is inarguably true. Accurate inventory tracking would help you for sure.",
-    image: screenshotInventory,
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ullam consequatur hic voluptates et quae pariatur ex laboriosam libero.",
+    image: screenshotExpenses,
     icon: function InventoryIcon() {
       return (
         <>
@@ -71,12 +71,12 @@ const features = [
     },
   },
   {
-    name: "Contacts",
+    name: "Retirement Strategies",
     summary:
-      "Organize all of your contacts, service providers, and invoices in one place.",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ullam consequatur.",
     description:
-      "This also isn’t actually a feature, it’s just some friendly advice. We definitely recommend that you do this, you’ll feel really organized and professional.",
-    image: screenshotContacts,
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ullam consequatur hic voluptates et quae pariatur ex laboriosam libero quam ad veritatis.",
+    image: screenshotVatReturns,
     icon: function ContactsIcon() {
       return (
         <>
@@ -214,11 +214,11 @@ export function SecondaryFeatures() {
           <h2
             id="secondary-features-title"
             className="font-display text-3xl tracking-tight text-slate-900 sm:text-4xl">
-            Simplify everyday business tasks.
+            Our clients come first.
           </h2>
           <p className="mt-4 text-lg tracking-tight text-slate-700">
-            Because you’d probably be a little confused if we suggested you
-            complicate your everyday business tasks instead.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
+            ullam consequatur hic voluptates et quae.
           </p>
         </div>
         <FeaturesMobile />

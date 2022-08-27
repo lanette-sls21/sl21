@@ -23,12 +23,12 @@ export function Hero() {
         for everyone.
       </h1>
       <p className="mx-auto mt-6 max-w-2xl text-lg tracking-tight text-slate-700">
-        Most bookkeeping software is accurate, but hard to use. We make the
-        opposite trade-off, and hope you don’t get audited.
+        We shop to find the best products to help you secure your ​family&apos;s
+        lifestyle with integrated wealth management and retirement strategies.
       </p>
       <div className="mt-10 flex justify-center space-x-6">
         <ButtonLink className="" href="/register">
-          Get 6 months free
+          Schedule a call
         </ButtonLink>
         <Button
           className=""
