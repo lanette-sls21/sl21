@@ -1,6 +1,7 @@
 import { createRouter } from "./context";
 
 import groq from "groq";
+import { z } from "zod";
 
 export const postRouter = createRouter()
   .query("find-many", {
@@ -31,13 +32,16 @@ export const postRouter = createRouter()
         }
       });
 
-      console.log(posts);
       return posts;
     },
   })
   .query("find-unique", {
-    async resolve({ ctx }) {
-      const query = groq`*[_type == "post"] {
+    input: z.object({
+      slug: z.string(),
+    }),
+    async resolve({ ctx, input }) {
+      console.log(input.slug);
+      const query = groq`*[_type == "post" && slug.current == "${input.slug}"] {
       title,
       slug,
       mainImage,
@@ -52,9 +56,9 @@ export const postRouter = createRouter()
             return {
               title: post.title,
               slug: post.slug,
-              author: post.author,
               image: post.mainImage,
-              description: post.body[0].children[0].text,
+              author: post.author,
+              body: post.body,
               publishedAt: post.publishedAt,
             };
           });
@@ -63,7 +67,7 @@ export const postRouter = createRouter()
         }
       });
 
-      console.log(posts);
+      console.log(posts[0]);
       return posts[0];
     },
   });
