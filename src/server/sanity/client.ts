@@ -6,10 +6,9 @@ const options: ClientConfig = {
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
   useCdn: true,
   useProjectHostname: true,
+  apiVersion: "2022-08-09", // use current UTC date - see "specifying API version"!
 };
 
-const sanity = sanityClient(options);
+export const sanity = sanityClient(options);
 
 export const imageBuilder = sanityImage(sanity);
-
-export default sanity;
