@@ -13,11 +13,7 @@ function FeaturedPostCard({ post }: any) {
       </div>
       <div className="flex-1 bg-white p-6 flex flex-col justify-between">
         <div className="flex-1">
-          <p className="text-sm font-medium text-indigo-600">
-            {/* <a href={category.href} className="hover:underline">
-              {category.name}
-            </a> */}
-          </p>
+          <p className="text-sm font-medium text-blue-600">Article</p>
           <Link href={`/blog/${post.slug.current}`}>
             <a className="block mt-2">
               <p className="text-xl font-semibold text-gray-900">
