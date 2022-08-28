@@ -71,9 +71,9 @@ function MobileNavigation() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#pricing">
+                  <Link href="#blog">
                     <a className="block w-full" onClick={() => close()}>
-                      Pricing
+                      Blog
                     </a>
                   </Link>
                 </li>
