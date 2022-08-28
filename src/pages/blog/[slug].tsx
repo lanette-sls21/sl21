@@ -1,16 +1,15 @@
 import { trpc } from "@/utils/trpc";
 import Post from "@/components/Post";
 import { Header } from "@/components/Header";
+import PostLoader from "@/components/PostLoader";
 
 const PostPage = ({ slug }: any) => {
   const postTRPC = trpc.useQuery(["post.find-unique", { slug }]);
 
-  if (postTRPC.isLoading) return <div></div>;
-
   return (
     <>
       <Header />
-      <Post post={postTRPC.data} />
+      {postTRPC.isLoading ? <PostLoader /> : <Post post={postTRPC.data} />}
     </>
   );
 };
