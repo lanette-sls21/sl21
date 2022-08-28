@@ -1,4 +1,5 @@
 import { trpc } from "@/utils/trpc";
+import FadeInDiv from "./FadeInDiv";
 import FeaturedPostCard from "./FeaturedPostCard";
 
 export default function FeaturedPosts() {
@@ -23,7 +24,13 @@ export default function FeaturedPosts() {
         </div>
         <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
           {posts.data?.map((post: any, index: any) => (
-            <FeaturedPostCard key={index} post={post} />
+            <FadeInDiv
+              key={index}
+              whenVisible={"translate-y-0 opacity-100"}
+              whenHidden={"translate-y-10 opacity-10"}
+              duration={700}>
+              <FeaturedPostCard post={post} />
+            </FadeInDiv>
           ))}
         </div>
       </div>
