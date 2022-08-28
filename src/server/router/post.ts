@@ -8,11 +8,14 @@ export const postRouter = createRouter()
     async resolve({ ctx }) {
       const query = groq`*[_type == "post"] {
       title,
+      subtitle,
       slug,
       mainImage,
-      "author": author->name,
+      "authorName": author->name,
+      "authorImage": author->image,
       body,
       publishedAt,
+      readTime
     }`;
 
       const posts = await ctx.sanity.fetch(query).then((posts: any) => {
@@ -20,18 +23,20 @@ export const postRouter = createRouter()
           return posts.map((post: any) => {
             return {
               title: post.title,
+              subtitle: post.subtitle,
               slug: post.slug,
-              author: post.author,
+              authorName: post.authorName,
+              authorImage: post.authorImage,
               image: post.mainImage,
               description: post.body[0].children[0].text,
               publishedAt: post.publishedAt,
+              readTime: post.readTime,
             };
           });
         } catch (error) {
           console.error(error);
         }
       });
-
       return posts;
     },
   })
@@ -40,7 +45,6 @@ export const postRouter = createRouter()
       slug: z.string(),
     }),
     async resolve({ ctx, input }) {
-      console.log(input.slug);
       const query = groq`*[_type == "post" && slug.current == "${input.slug}"] {
       title,
       slug,
@@ -66,8 +70,6 @@ export const postRouter = createRouter()
           console.error(error);
         }
       });
-
-      console.log(posts[0]);
       return posts[0];
     },
   });

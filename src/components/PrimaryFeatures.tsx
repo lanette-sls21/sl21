@@ -5,37 +5,9 @@ import clsx from "clsx";
 
 import { Container } from "@/components/Container";
 import backgroundImage from "@/images/background-features.jpg";
-import screenshotExpenses from "@/images/screenshots/expenses.png";
-import screenshotPayroll from "@/images/screenshots/payroll.png";
-import screenshotReporting from "@/images/screenshots/reporting.png";
-import screenshotVatReturns from "@/images/screenshots/vat-returns.png";
-
-const features = [
-  {
-    title: "Safe Money Movement",
-    description:
-      "Safe and powerful growth of your retirement nest egg while guaranteeing your investment principal and annual gains.​",
-    image: screenshotPayroll,
-  },
-  {
-    title: "Planning",
-    description:
-      "We can predict a minimum guaranteed income starting now or 30 years from now while providing​ for life's contingencies at every life stage.",
-    image: screenshotExpenses,
-  },
-  {
-    title: "Social Security",
-    description:
-      "Avoid up to $10,000 tax bill on your Social Security payments. Create more tax savings with a tax-free lifetime income.",
-    image: screenshotVatReturns,
-  },
-  // {
-  //   title: "Reporting",
-  //   description:
-  //     "Easily export your data into an Excel spreadsheet where you can do whatever the hell you want with it.",
-  //   image: screenshotReporting,
-  // },
-];
+import { trpc } from "@/utils/trpc";
+import SanityImage from "./SanityImageLoader";
+import FadeInDiv from "./FadeInDiv";
 
 export function PrimaryFeatures() {
   let [tabOrientation, setTabOrientation] = useState("horizontal");
@@ -54,6 +26,8 @@ export function PrimaryFeatures() {
       lgMediaQuery.removeEventListener("change", onMediaQueryChange);
     };
   }, []);
+
+  const featuresTRPC = trpc.useQuery(["primaryFeature.find-many"]);
 
   return (
     <section
@@ -78,8 +52,8 @@ export function PrimaryFeatures() {
             The details make the difference.
           </h2>
           <p className="mt-6 text-lg tracking-tight text-blue-100">
-            Well everything you need if you aren’t that picky about minor
-            details like tax compliance.
+            Every feature of these contracts contains more detail that needs to
+            be part of your due diligence.
           </p>
         </div>
         <Tab.Group
@@ -90,7 +64,7 @@ export function PrimaryFeatures() {
             <>
               <div className="-mx-4 flex overflow-x-auto pb-4 sm:mx-0 sm:overflow-visible sm:pb-0 lg:col-span-5">
                 <Tab.List className="relative z-10 flex space-x-4 whitespace-nowrap px-4 sm:mx-auto sm:px-0 lg:mx-0 lg:block lg:space-y-1 lg:space-x-0 lg:whitespace-normal">
-                  {features.map((feature, featureIndex) => (
+                  {featuresTRPC.data?.map((feature: any, featureIndex: any) => (
                     <div
                       key={feature.title}
                       className={clsx(
@@ -130,7 +104,7 @@ export function PrimaryFeatures() {
                 </Tab.List>
               </div>
               <Tab.Panels className="lg:col-span-7">
-                {features.map((feature) => (
+                {featuresTRPC.data?.map((feature: any) => (
                   <Tab.Panel key={feature.title} unmount={false}>
                     <div className="relative sm:px-6 lg:hidden">
                       <div className="absolute -inset-x-4 -top-[6.5rem] -bottom-[4.25rem] bg-white/10 ring-1 ring-inset ring-white/10 sm:inset-x-0 sm:rounded-t-xl" />
@@ -138,15 +112,16 @@ export function PrimaryFeatures() {
                         {feature.description}
                       </p>
                     </div>
-                    <div className="relative mt-10 aspect-[1085/730] w-[45rem] overflow-hidden rounded-xl bg-slate-50 shadow-xl shadow-blue-900/20 sm:w-auto lg:mt-0 lg:w-[67.8125rem]">
-                      <Image
-                        src={feature.image}
-                        alt=""
-                        layout="fill"
-                        priority
-                        sizes="(min-width: 1024px) 67.8125rem, (min-width: 640px) 100vw, 45rem"
-                      />
-                    </div>
+                    <FadeInDiv
+                      whenVisible={"translate-0 opacity-100"}
+                      whenHidden={
+                        "translate-x-10 lg:translate-y-10 lg:translate-x-0 opacity-10"
+                      }
+                      duration={700}>
+                      <div className="relative mt-10 aspect-[1085/730] w-[45rem] overflow-hidden rounded-xl bg-slate-50 shadow-xl shadow-blue-900/20 sm:w-auto lg:mt-0 lg:w-[67.8125rem]">
+                        <SanityImage image={feature.image} />
+                      </div>
+                    </FadeInDiv>
                   </Tab.Panel>
                 ))}
               </Tab.Panels>

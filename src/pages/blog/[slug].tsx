@@ -5,8 +5,6 @@ import { Header } from "@/components/Header";
 const PostPage = ({ slug }: any) => {
   const postTRPC = trpc.useQuery(["post.find-unique", { slug }]);
 
-  if (postTRPC.isLoading) return <div></div>;
-
   return (
     <>
       <Header />

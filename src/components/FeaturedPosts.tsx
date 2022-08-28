@@ -1,13 +1,14 @@
 import { trpc } from "@/utils/trpc";
+import FadeInDiv from "./FadeInDiv";
 import FeaturedPostCard from "./FeaturedPostCard";
 
 export default function FeaturedPosts() {
   const posts = trpc.useQuery(["post.find-many"]);
 
-  console.log(posts.data);
-
   return (
-    <div className="relative bg-gray-50 pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
+    <div
+      id={"blog"}
+      className="relative bg-gray-50 pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
       <div className="absolute inset-0">
         <div className="bg-white h-1/3 sm:h-2/3" />
       </div>
@@ -17,13 +18,19 @@ export default function FeaturedPosts() {
             Helpful Resources
           </h2>
           <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa
-            libero labore natus atque, ducimus sed.
+            For more information on our process, or how we can help you invest,
+            check out some of the articles below.
           </p>
         </div>
         <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
           {posts.data?.map((post: any, index: any) => (
-            <FeaturedPostCard key={index} post={post} />
+            <FadeInDiv
+              key={index}
+              whenVisible={"translate-y-0 opacity-100"}
+              whenHidden={"translate-y-10 opacity-10"}
+              duration={700}>
+              <FeaturedPostCard post={post} />
+            </FadeInDiv>
           ))}
         </div>
       </div>
