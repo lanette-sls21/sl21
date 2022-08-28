@@ -25,7 +25,6 @@ export const primaryFeatureRouter = createRouter().query("find-many", {
           console.error(error);
         }
       });
-    console.log(primaryFeatures);
     return primaryFeatures;
   },
 });
