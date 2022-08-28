@@ -45,7 +45,6 @@ export const postRouter = createRouter()
       slug: z.string(),
     }),
     async resolve({ ctx, input }) {
-      console.log(input.slug);
       const query = groq`*[_type == "post" && slug.current == "${input.slug}"] {
       title,
       slug,
@@ -71,8 +70,6 @@ export const postRouter = createRouter()
           console.error(error);
         }
       });
-
-      console.log(posts[0]);
       return posts[0];
     },
   });
