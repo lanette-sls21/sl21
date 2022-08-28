@@ -20,7 +20,7 @@ const ptComponents = {
 
 export default function Post({ post }: any) {
   return (
-    <div className="relative py-16 bg-white overflow-hidden prose-a:text-blue-600 prose-strong:text-blue-600">
+    <div className="relative py-16 bg-white overflow-hidden">
       <div className="hidden lg:block lg:absolute lg:inset-y-0 lg:h-full lg:w-full">
         <div
           className="relative h-full text-lg max-w-prose mx-auto"
@@ -127,7 +127,7 @@ export default function Post({ post }: any) {
               {post.title}
             </span>
           </h1>
-          <article className="mt-6 prose prose-indigo prose-lg text-gray-500 mx-auto">
+          <article className="mt-6 prose prose-blue  prose-a:text-blue-600 prose-strong:text-blue-600 prose-lg text-gray-500 mx-auto prose-img:rounded-xl">
             <PortableText value={post.body} components={ptComponents} />
           </article>
         </div>
