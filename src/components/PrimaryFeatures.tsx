@@ -7,6 +7,7 @@ import { Container } from "@/components/Container";
 import backgroundImage from "@/images/background-features.jpg";
 import { trpc } from "@/utils/trpc";
 import SanityImage from "./SanityImageLoader";
+import FadeInDiv from "./FadeInDiv";
 
 export function PrimaryFeatures() {
   let [tabOrientation, setTabOrientation] = useState("horizontal");
@@ -111,9 +112,16 @@ export function PrimaryFeatures() {
                         {feature.description}
                       </p>
                     </div>
-                    <div className="relative mt-10 aspect-[1085/730] w-[45rem] overflow-hidden rounded-xl bg-slate-50 shadow-xl shadow-blue-900/20 sm:w-auto lg:mt-0 lg:w-[67.8125rem]">
-                      <SanityImage image={feature.image} />
-                    </div>
+                    <FadeInDiv
+                      whenVisible={"translate-0 opacity-100"}
+                      whenHidden={
+                        "translate-x-10 lg:translate-y-10 lg:translate-x-0 opacity-10"
+                      }
+                      duration={700}>
+                      <div className="relative mt-10 aspect-[1085/730] w-[45rem] overflow-hidden rounded-xl bg-slate-50 shadow-xl shadow-blue-900/20 sm:w-auto lg:mt-0 lg:w-[67.8125rem]">
+                        <SanityImage image={feature.image} />
+                      </div>
+                    </FadeInDiv>
                   </Tab.Panel>
                 ))}
               </Tab.Panels>
