@@ -51,8 +51,8 @@ export function PrimaryFeatures() {
             The details make the difference.
           </h2>
           <p className="mt-6 text-lg tracking-tight text-blue-100">
-            Well everything you need if you aren’t that picky about minor
-            details like tax compliance.
+            Every feature of these contracts contains more detail that needs to
+            be part of your due diligence.
           </p>
         </div>
         <Tab.Group
