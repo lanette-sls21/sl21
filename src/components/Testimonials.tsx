@@ -1,76 +1,82 @@
 import Image from "next/image";
 
 import { Container } from "@/components/Container";
-import avatarImage1 from "@/images/avatars/avatar-1.png";
-import avatarImage2 from "@/images/avatars/avatar-2.png";
-import avatarImage3 from "@/images/avatars/avatar-3.png";
-import avatarImage4 from "@/images/avatars/avatar-4.png";
-import avatarImage5 from "@/images/avatars/avatar-5.png";
+import { trpc } from "@/utils/trpc";
+import SanityImage from "./SanityImageLoader";
+// import avatarImage1 from "@/images/avatars/avatar-1.png";
+// import avatarImage2 from "@/images/avatars/avatar-2.png";
+// import avatarImage3 from "@/images/avatars/avatar-3.png";
+// import avatarImage4 from "@/images/avatars/avatar-4.png";
+// import avatarImage5 from "@/images/avatars/avatar-5.png";
 
-const testimonials = [
-  [
-    {
-      content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ullam consequatur hic voluptates et quae pariatur ex laboriosam libero quam ad veritatis deleniti.",
-      author: {
-        name: "Sheryl Berge",
-        location: "Popejoy, Iowa",
-        image: avatarImage1,
-      },
-    },
-    {
-      content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ullam consequatur hic voluptates et quae pariatur ex laboriosam libero quam ad veritatis.",
-      author: {
-        name: "Amy Hahn",
-        location: "Hooker, Oklahoma",
-        image: avatarImage4,
-      },
-    },
-  ],
-  [
-    {
-      content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ullam consequatur hic voluptates et quae pariatur ex laboriosam libero quam ad veritatis deleniti deserunt, nemo alias! Enim ipsum quidem deleniti.",
-      author: {
-        name: "Leland Kiehn",
-        location: "China, Texas",
-        image: avatarImage5,
-      },
-    },
-    {
-      content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ullam consequatur hic voluptates et quae pariatur ex laboriosam.",
-      author: {
-        name: "Erin Powlowski",
-        location: "Rainbow City, Alabama",
-        image: avatarImage2,
-      },
-    },
-  ],
-  [
-    {
-      content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ullam consequatur hic voluptates et quae pariatur ex laboriosam libero quam ad",
-      author: {
-        name: "Peter Renolds",
-        location: "Blue Grass, Iowa",
-        image: avatarImage3,
-      },
-    },
-    {
-      content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ullam consequatur hic voluptates et quae pariatur ex laboriosam libero quam ad veritatis.",
-      author: {
-        name: "Amy Hahn",
-        location: "Colon, Michigan",
-        image: avatarImage4,
-      },
-    },
-  ],
-];
+// const testimonials = [
+//   [
+//     {
+//       content:
+//         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ullam consequatur hic voluptates et quae pariatur ex laboriosam libero quam ad veritatis deleniti.",
+//       author: {
+//         name: "Sheryl Berge",
+//         location: "Popejoy, Iowa",
+//         image: avatarImage1,
+//       },
+//     },
+//     {
+//       content:
+//         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ullam consequatur hic voluptates et quae pariatur ex laboriosam libero quam ad veritatis.",
+//       author: {
+//         name: "Amy Hahn",
+//         location: "Hooker, Oklahoma",
+//         image: avatarImage4,
+//       },
+//     },
+//   ],
+//   [
+//     {
+//       content:
+//         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ullam consequatur hic voluptates et quae pariatur ex laboriosam libero quam ad veritatis deleniti deserunt, nemo alias! Enim ipsum quidem deleniti.",
+//       author: {
+//         name: "Leland Kiehn",
+//         location: "China, Texas",
+//         image: avatarImage5,
+//       },
+//     },
+//     {
+//       content:
+//         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ullam consequatur hic voluptates et quae pariatur ex laboriosam.",
+//       author: {
+//         name: "Erin Powlowski",
+//         location: "Rainbow City, Alabama",
+//         image: avatarImage2,
+//       },
+//     },
+//   ],
+//   [
+//     {
+//       content:
+//         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ullam consequatur hic voluptates et quae pariatur ex laboriosam libero quam ad",
+//       author: {
+//         name: "Peter Renolds",
+//         location: "Blue Grass, Iowa",
+//         image: avatarImage3,
+//       },
+//     },
+//     {
+//       content:
+//         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ullam consequatur hic voluptates et quae pariatur ex laboriosam libero quam ad veritatis.",
+//       author: {
+//         name: "Amy Hahn",
+//         location: "Colon, Michigan",
+//         image: avatarImage4,
+//       },
+//     },
+//   ],
+// ];
 
 export function Testimonials() {
+  const testimonials = trpc.useQuery(["testimonail.find-many"]);
+
+  console.log(testimonials.data);
+
   return (
     <section
       id="testimonials"
@@ -89,10 +95,10 @@ export function Testimonials() {
           </p>
         </div>
         <ul className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:gap-8 lg:mt-20 lg:max-w-none lg:grid-cols-3">
-          {testimonials.map((column, columnIndex) => (
+          {testimonials.data?.map((column: any, columnIndex: any) => (
             <li key={columnIndex}>
               <ul className="space-y-6 sm:space-y-8">
-                {column.map((testimonial, testimonialIndex) => (
+                {column.map((testimonial: any, testimonialIndex: any) => (
                   <li key={testimonialIndex}>
                     <figure className="relative rounded-2xl bg-white p-6 shadow-xl shadow-slate-900/10">
                       <svg
@@ -110,14 +116,14 @@ export function Testimonials() {
                       <figcaption className="relative mt-6 flex items-center justify-between border-t border-slate-100 pt-6">
                         <div>
                           <div className="font-display text-base text-slate-900">
-                            {testimonial.author.name}
+                            {testimonial.name}
                           </div>
                           <div className="mt-1 text-sm text-slate-500">
-                            {testimonial.author.location}
+                            {testimonial.location}
                           </div>
                         </div>
-                        <div className="h-14 w-14 overflow-hidden rounded-full bg-slate-50">
-                          <Image src={testimonial.author.image} alt="" />
+                        <div className="h-14 w-14 overflow-hidden rounded-full bg-slate-50 relative">
+                          <SanityImage image={testimonial.image} />
                         </div>
                       </figcaption>
                     </figure>
