@@ -81,11 +81,11 @@ export function Testimonials() {
           <h2
             id="testimonials-title"
             className="font-display text-3xl tracking-tight text-slate-900 sm:text-4xl">
-            Loved by people worldwide.
+            It&apos;s never too early to start saving
           </h2>
           <p className="mt-4 text-lg tracking-tight text-slate-700">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit,
-            ipsam. Est eum obcaecati et tempore! Natus dolore.
+            Secure Lifestyles 21 has beening helping people across the country
+            make smart money decisions.
           </p>
         </div>
         <ul className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:gap-8 lg:mt-20 lg:max-w-none lg:grid-cols-3">
