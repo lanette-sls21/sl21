@@ -135,11 +135,7 @@ export function Header() {
                 color="slate"
                 // onClick={() => signIn("auth0", { callbackUrl: "/" })}
                 onClick={() =>
-                  signIn(
-                    "auth0",
-                    { callbackUrl: "/#features" },
-                    { propmt: "login" }
-                  )
+                  signIn("auth0", { callbackUrl: "/" }, { propmt: "login" })
                 }>
                 Sign in
               </Button>
