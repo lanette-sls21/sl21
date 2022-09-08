@@ -1,6 +1,6 @@
 import NextAuth, { type NextAuthOptions } from "next-auth";
+
 import Auth0Provider from "next-auth/providers/auth0";
-import CredentialsProvider from "next-auth/providers/credentials";
 
 // Prisma adapter for NextAuth, optional and can be removed
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
@@ -22,7 +22,8 @@ export const authOptions: NextAuthOptions = {
     updateAge: 24 * 60 * 60, // 24 hours
   },
   callbacks: {
-    session({ session, user }) {
+    session(sessionData) {
+      const { session, user } = sessionData;
       session.userId = user.id;
       return session;
     },

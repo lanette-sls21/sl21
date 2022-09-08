@@ -22,7 +22,7 @@ export default function FadeInDiv({
     <div
       className={clsx(
         isVisible ? `${whenVisible}` : `${whenHidden}`,
-        `transition duration-${duration}`
+        `transition duration-300 lg:duration-1000`
       )}
       ref={domRef}>
       {children}
