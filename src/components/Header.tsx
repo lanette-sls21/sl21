@@ -3,9 +3,10 @@ import Link from "next/link";
 import { Popover, Transition } from "@headlessui/react";
 import clsx from "clsx";
 
-import { ButtonLink } from "@/components/Button";
+import { Button, ButtonLink } from "@/components/Button";
 import { Container } from "@/components/Container";
 import { Logo } from "@/components/Logo";
+import { signIn, signOut } from "next-auth/react";
 
 function MobileNavigation() {
   return (
@@ -127,18 +128,37 @@ export function Header() {
               </Link>
             </li>
             <li className="ml-auto hidden md:block">
-              <Link href="/login">
-                <a className="rounded-lg py-1 px-2 text-slate-700 hover:bg-slate-100 hover:text-slate-900">
-                  Sign in
-                </a>
-              </Link>
+              <Button
+                className=""
+                href="/login"
+                variant="outline"
+                color="slate"
+                // onClick={() => signIn("auth0", { callbackUrl: "/" })}
+                onClick={() =>
+                  signIn(
+                    "auth0",
+                    { callbackUrl: "/#features" },
+                    { propmt: "login" }
+                  )
+                }>
+                Sign in
+              </Button>
             </li>
             <li className="ml-auto md:ml-8">
-              <ButtonLink className="" href="/register" color="blue">
+              <Button
+                className=""
+                color="blue"
+                onClick={() =>
+                  signIn(
+                    "auth0",
+                    { callbackUrl: "/#features" },
+                    { propmt: "login" }
+                  )
+                }>
                 <span>
                   Get started<span className="hidden lg:inline"> today</span>
                 </span>
-              </ButtonLink>
+              </Button>
             </li>
             <li className="ml-5 -mr-1 md:hidden">
               <MobileNavigation />

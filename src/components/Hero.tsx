@@ -27,7 +27,7 @@ export function Hero() {
         lifestyle with integrated wealth management and retirement strategies.
       </p>
       <div className="mt-10 flex justify-center space-x-6">
-        <ButtonLink className="" href="/register">
+        <ButtonLink className="" href="mailto: john@sls21.com">
           Schedule a call
         </ButtonLink>
         <Button

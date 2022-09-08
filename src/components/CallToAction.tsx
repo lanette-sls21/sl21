@@ -25,15 +25,18 @@ export function CallToAction() {
             Get started today.
           </h2>
           <p className="mt-4 text-lg tracking-tight text-white">
-            It’s time to take control of your retirement. Book a meeting with
-            us, or download our free E-Book today.
+            It’s time to take control of your retirement. Book a meeting with us
+            today by sending us an email.
           </p>
-          <ButtonLink href="/register" color="slate" className="mt-10 mr-6">
-            Schedule a call
+          <ButtonLink
+            href="mailto: john@sls21.com"
+            color="white"
+            className="mt-10 mr-6">
+            Contact Us
           </ButtonLink>
-          <ButtonLink href="/register" color="white" className="mt-10">
+          {/* <ButtonLink href="/register" color="white" className="mt-10">
             Download Free E-Book
-          </ButtonLink>
+          </ButtonLink> */}
         </div>
       </Container>
     </section>
