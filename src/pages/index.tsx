@@ -10,6 +10,7 @@ import { PrimaryFeatures } from "@/components/PrimaryFeatures";
 // import { SecondaryFeatures } from "@/components/SecondaryFeatures";
 import { Testimonials } from "@/components/Testimonials";
 import FeaturedPosts from "@/components/FeaturedPosts";
+import Contact from "@/components/Contact";
 
 export default function Home() {
   return (
@@ -30,6 +31,7 @@ export default function Home() {
         <FeaturedPosts />
         {/* <Pricing />
         <Faqs /> */}
+        <Contact />
       </main>
       <Footer />
     </>

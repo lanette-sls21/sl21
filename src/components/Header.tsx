@@ -78,6 +78,13 @@ function MobileNavigation() {
                     </a>
                   </Link>
                 </li>
+                <li>
+                  <Link href="#contact">
+                    <a className="block w-full" onClick={() => close()}>
+                      Contact
+                    </a>
+                  </Link>
+                </li>
                 <li className="border-t border-slate-300/40 pt-4">
                   <Link href="/login">
                     <a className="block w-full">Sign in</a>
@@ -124,6 +131,13 @@ export function Header() {
               <Link href="#blog">
                 <a className="rounded-lg py-1 px-2 text-slate-700 hover:bg-slate-100 hover:text-slate-900">
                   Blog
+                </a>
+              </Link>
+            </li>
+            <li className="ml-6 hidden md:block">
+              <Link href="#contact">
+                <a className="rounded-lg py-1 px-2 text-slate-700 hover:bg-slate-100 hover:text-slate-900">
+                  Contact
                 </a>
               </Link>
             </li>
