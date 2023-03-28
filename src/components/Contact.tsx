@@ -25,8 +25,8 @@ export default function Contact() {
                   />
                 </div>
                 <div className="ml-3 text-base text-gray-500">
-                  <p>+1 (555) 123 4567</p>
-                  <p className="mt-1">Mon-Fri 8am to 6pm PST</p>
+                  <p>+1 (504) 729-4141</p>
+                  <p className="mt-1">Mon-Fri 8am to 6pm CST</p>
                 </div>
               </div>
               <div className="mt-6 flex">
